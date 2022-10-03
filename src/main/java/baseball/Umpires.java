@@ -1,11 +1,20 @@
 package baseball;
 
+import java.util.List;
+
 public class Umpires {
 
     private Rule rule;
 
     public Umpires(Rule rule) {
         this.rule = rule;
+    }
+
+    public boolean judgementAndIsEndGame(final List<Integer> source, final List<Integer> target) {
+        int ball = rule.countBall(source, target);
+        int strike = rule.countStrike(source, target);
+        shout(ball, strike);
+        return endGame(strike);
     }
 
     private void shout(final int ball, final int strike) {
@@ -32,6 +41,10 @@ public class Umpires {
 
     private boolean hasStrike(final int strike) {
         return strike > 0;
+    }
+
+    private boolean endGame(final int strike) {
+        return strike == rule.NUMBER_OF_DIGITS;
     }
 
 

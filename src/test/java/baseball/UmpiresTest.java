@@ -7,6 +7,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,5 +31,22 @@ class UmpiresTest {
         method.invoke(umpires, ball, strike);
 
     }
+
+    @Test
+    @DisplayName("게임 심판 및 게임 종료 여부 확인")
+    void judgementAndIsEndGame() {
+        // given
+        Umpires umpires = new Umpires(new Rule());
+        List<Integer> source = new ArrayList<>(Arrays.asList(1,2,4));
+        List<Integer> target = new ArrayList<>(Arrays.asList(1,2,4));
+
+        // when
+        boolean result = umpires.judgementAndIsEndGame(source, target);
+
+        // then
+        assertTrue(result);
+
+    }
+
 
 }
