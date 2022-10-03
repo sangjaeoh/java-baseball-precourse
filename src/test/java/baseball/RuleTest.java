@@ -46,4 +46,34 @@ class RuleTest {
         assertFalse(isFalse);
     }
 
+    @Test
+    @DisplayName("컴퓨터, 사용자 3자리 수의 스트라이크 갯수 반환")
+    void countStrike(){
+        // given
+        List<Integer> source = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> target = new ArrayList<>(Arrays.asList(1,2,4));
+
+        // when
+        Rule rule = new Rule();
+        int strike = rule.countStrike(source, target);
+
+        // then
+        assertEquals(2, strike);
+    }
+
+    @Test
+    @DisplayName("컴퓨터, 사용자 3자리 수의 볼 갯수 반환")
+    void countBall(){
+        // given
+        List<Integer> source = new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> target = new ArrayList<>(Arrays.asList(2,1,4));
+
+        // when
+        Rule rule = new Rule();
+        int ball = rule.countBall(source, target);
+
+        // then
+        assertEquals(2, ball);
+    }
+
 }
