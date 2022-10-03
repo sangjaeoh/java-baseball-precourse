@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Umpires {
 
-    private Rule rule;
+    private final Rule rule;
 
     public Umpires(Rule rule) {
         this.rule = rule;

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RandomNumber {
 
-    private Rule rule;
+    private final Rule rule;
 
     public RandomNumber(Rule rule) {
         this.rule = rule;
