@@ -20,22 +20,17 @@ public class BaseBallGame {
     public void run() {
         boolean play = true;
         while (play) {
-            // 사용자 3자리 수 입력
             inputPlayerNumbers();
-            // 컴퓨터 3자리수 생성
-            if (computerNumbers == null || computerNumbers.isEmpty()) {
-                createComputerNumbers();
-            }
-
+            createComputerNumbers();
             if (umpires.judgementAndIsEndGame(playerNumbers, computerNumbers)) {
-                printEndGame();
-                clearPlayerComputerNumbers();
+                endGame();
                 play = replayInput();
             }
         }
     }
 
     private void inputPlayerNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         playerNumbers = Input.inputNumbers();
         if (!rule.validateNumbers(playerNumbers)) {
             throw new IllegalArgumentException();
@@ -43,7 +38,9 @@ public class BaseBallGame {
     }
 
     private void createComputerNumbers() {
-        computerNumbers = randomNumber.getNumbers();
+        if (computerNumbers == null || computerNumbers.isEmpty()) {
+            computerNumbers = randomNumber.getNumbers();
+        }
     }
 
     private void printEndGame() {
@@ -65,5 +62,10 @@ public class BaseBallGame {
     private void clearPlayerComputerNumbers() {
         playerNumbers.clear();
         computerNumbers.clear();
+    }
+
+    private void endGame(){
+        printEndGame();
+        clearPlayerComputerNumbers();
     }
 }

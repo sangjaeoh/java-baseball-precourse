@@ -18,7 +18,12 @@ public class Umpires {
     }
 
     private void shout(final int ball, final int strike) {
-        StringBuffer voices = new StringBuffer();
+        StringBuffer voice = new StringBuffer();
+        makeVoice(ball, strike, voice);
+        System.out.println(voice.toString().trim());
+    }
+
+    private void makeVoice(final int ball, final int strike, final StringBuffer voices){
         if (nothing(ball, strike)) {
             voices.append(Call.NOTHING.voice);
         }
@@ -28,7 +33,6 @@ public class Umpires {
         if (hasStrike(strike)) {
             voices.append(strike + Call.STRIKE.voice);
         }
-        System.out.println(voices.toString().trim());
     }
 
     private boolean nothing(final int ball, final int strike) {
